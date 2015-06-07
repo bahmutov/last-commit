@@ -1,0 +1,27 @@
+{
+  "name": "last-commit",
+  "version": "0.1.0",
+  "description": "Save / read last git commit id from file or from git log",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bahmutov/last-commit.git"
+  },
+  "keywords": [
+    "git",
+    "commit",
+    "id",
+    "build",
+    "ci",
+    "utility"
+  ],
+  "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bahmutov/last-commit/issues"
+  },
+  "homepage": "https://github.com/bahmutov/last-commit"
+}
