@@ -59,8 +59,9 @@ function fullFilename() {
 }
 
 function loadLastCommitId() {
-  readGitLog()
+  return readGitLog()
     .catch(function noGitRepo() {
+      console.log('could not find git repo, trying file');
       var filename = fullFilename();
       var id = loadCommitIdFromFile(filename);
       return id;
