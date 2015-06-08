@@ -6,6 +6,7 @@
   "bugs": {
     "url": "https://github.com/bahmutov/last-commit/issues"
   },
+  "contributors": [],
   "dependencies": {
     "ggit": "0.13.0"
   },
@@ -15,7 +16,6 @@
     "grunty": "0.1.1",
     "pre-git": "0.2.1"
   },
-  "contributors": [],
   "engines": {
     "node": "> 0.10.0"
   },
