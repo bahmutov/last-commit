@@ -40,6 +40,16 @@ When starting the application, use this module's exported function that will try
 In both cases shorten id will be returned, but the `build.json` will contain the
 full one.
 
+Example: embed the commit id in the Express server
+
+```js
+var getLastCommitId = require('last-commit');
+getLastCommitId()
+  .tap(function setCommitId(id) {
+    app.set('commit', id);
+  })
+```
+
 [1]: http://glebbahmutov.com/blog/deployed-commit/
 
 ### Small print

@@ -1,7 +1,7 @@
 {
   "name": "last-commit",
   "description": "Save / read last git commit id from file or from git log",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "bin": {
     "last-commit": "./index.js"
