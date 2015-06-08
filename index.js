@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 require('lazy-ass');
 var check = require('check-more-types');
 var ggit = require('ggit');
@@ -23,11 +25,8 @@ function shortenId(id) {
   return id;
 }
 
-function tryGitLog(id) {
-  if (!id) {
-    return ggit.lastCommitId();
-  }
-  return id;
+function readGitLog() {
+  return ggit.lastCommitId();
 }
 
 function loadCommitIdFromFile(filename) {
@@ -53,13 +52,33 @@ function returnDefault(id) {
   return check.unemptyString(id) ? id : DEFAULT_COMMIT_ID;
 }
 
+function fullFilename() {
+  var absolute = require('path').resolve;
+  var filename = absolute(BUILD_FILENAME);
+  return filename;
+}
+
 function loadLastCommitId() {
-  var join = require('path').join;
-  var filename = join(__dirname, '..', BUILD_FILENAME);
-  var id = loadCommitIdFromFile(filename);
-  return Promise.resolve(id)
-    .then(tryGitLog)
+  readGitLog()
+    .catch(function noGitRepo() {
+      var filename = fullFilename();
+      var id = loadCommitIdFromFile(filename);
+      return id;
+    })
     .then(shortenId)
     .then(returnDefault);
 }
 module.exports = loadLastCommitId;
+
+function isRunningStandAlone() {
+  return !module.parent;
+}
+
+if (isRunningStandAlone()) {
+  ggit.lastCommitId({ file: BUILD_FILENAME })
+    .then(function (id) {
+      la(check.commitId(id), 'could not get last commit id from repo', id);
+    })
+    .done();
+}
+
