@@ -26,7 +26,7 @@ function shortenId(id) {
 }
 
 function readGitLog() {
-  return ggit.lastCommitId();
+  return Promise.resolve(ggit.lastCommitId());
 }
 
 function loadCommitIdFromFile(filename) {
