@@ -61,15 +61,15 @@ function fullFilename() {
 
 function getHerokuCommit() {
   if (process.env.SOURCE_VERSION &&
-    check.commitId(process.env.SOURCE_VERSION)) {
+    check.unemptyString(process.env.SOURCE_VERSION)) {
     return process.env.SOURCE_VERSION;
   }
 }
 
 function loadLastCommitId() {
   var envCommitId = getHerokuCommit();
-  if (check.commitId(envCommitId)) {
-    return Promise.resolve(envCommitId);
+  if (check.unemptyString(envCommitId)) {
+    return Promise.resolve(envCommitId).then(shortenId);
   }
 
   return readGitLog()
