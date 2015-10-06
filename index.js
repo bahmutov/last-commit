@@ -10,11 +10,12 @@ var Promise = require('bluebird');
 
 var DEFAULT_COMMIT_ID = 'unknown';
 var BUILD_FILENAME = 'build.json';
+var SHORT_LENGTH = 7;
 
 function formatId(id) {
   la(check.commitId(id), 'expected full commit id', id);
-  var shortCommitId = id.substr(0, 7);
-  console.log('set last commit id to %s from long %s', shortCommitId, id);
+  var shortCommitId = id.substr(0, SHORT_LENGTH);
+  // console.log('set last commit id to %s from long %s', shortCommitId, id);
   return shortCommitId;
 }
 
@@ -58,7 +59,19 @@ function fullFilename() {
   return filename;
 }
 
+function getHerokuCommit() {
+  if (process.env.SOURCE_VERSION &&
+    check.commitId(process.env.SOURCE_VERSION)) {
+    return process.env.SOURCE_VERSION;
+  }
+}
+
 function loadLastCommitId() {
+  var envCommitId = getHerokuCommit();
+  if (check.commitId(envCommitId)) {
+    return Promise.resolve(envCommitId);
+  }
+
   return readGitLog()
     .catch(function noGitRepo() {
       console.log('could not find git repo, trying file');
@@ -76,10 +89,15 @@ function isRunningStandAlone() {
 }
 
 if (isRunningStandAlone()) {
+  loadLastCommitId()
+    .then(console.log.bind(console))
+    .done();
+  /*
   ggit.lastCommitId({ file: BUILD_FILENAME })
     .then(function (id) {
       la(check.commitId(id), 'could not get last commit id from repo', id);
     })
     .done();
+  */
 }
 
