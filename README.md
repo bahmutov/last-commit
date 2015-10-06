@@ -52,6 +52,11 @@ getLastCommitId()
 
 [1]: http://glebbahmutov.com/blog/deployed-commit/
 
+### Heroku
+
+If running on Heroku, the last deployed commit SHA is [available](https://devcenter.heroku.com/changelog-items/630) 
+under `SOURCE_VERSION` variable. This module will return it if found.
+
 ### Small print
 
 Author: Gleb Bahmutov &copy; 2015
