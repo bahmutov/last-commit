@@ -3,10 +3,9 @@
 require('lazy-ass');
 var check = require('check-more-types');
 var ggit = require('ggit');
-var Promise = require('bluebird');
 
 // assuming the commit id saved using ggit-last command
-// https://github.com/bahmutov/ggit#lastcommitid
+// https://github.com/bahmutov/ggit/blob/master/bin/ggit-last
 
 var DEFAULT_COMMIT_ID = 'unknown';
 var BUILD_FILENAME = 'build.json';
@@ -91,7 +90,7 @@ function isRunningStandAlone() {
 if (isRunningStandAlone()) {
   loadLastCommitId()
     .then(console.log.bind(console))
-    .done();
+    .catch(console.error);
   /*
   ggit.lastCommitId({ file: BUILD_FILENAME })
     .then(function (id) {

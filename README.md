@@ -2,6 +2,11 @@
 
 > Save / read last git commit id from file or from git log
 
+[![NPM][last-commit-icon] ][last-commit-url]
+
+[![Build status][last-commit-ci-image] ][last-commit-ci-url]
+[![semantic-release][semantic-image] ][semantic-url]
+
 Often we need to [embed last commit id](http://glebbahmutov.com/blog/embed-version-info/)
 into the server information to enable efficient debugging. Since the code is often executed
 on a separate instance without the any Git information (like Heroku), we need other means
@@ -54,7 +59,7 @@ getLastCommitId()
 
 ### Heroku
 
-If running on Heroku, the last deployed commit SHA is [available](https://devcenter.heroku.com/changelog-items/630) 
+If running on Heroku, the last deployed commit SHA is [available](https://devcenter.heroku.com/changelog-items/630)
 under `SOURCE_VERSION` variable. This module will return it if found.
 
 ### Small print
@@ -96,3 +101,10 @@ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
+
+[last-commit-icon]: https://nodei.co/npm/last-commit.png?downloads=true
+[last-commit-url]: https://npmjs.org/package/last-commit
+[last-commit-ci-image]: https://travis-ci.org/bahmutov/last-commit.png?branch=master
+[last-commit-ci-url]: https://travis-ci.org/bahmutov/last-commit
+[semantic-image]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
+[semantic-url]: https://github.com/semantic-release/semantic-release
