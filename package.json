@@ -9,6 +9,16 @@
   "bugs": {
     "url": "https://github.com/bahmutov/last-commit/issues"
   },
+  "config": {
+    "pre-git": {
+      "commit-msg": "simple",
+      "pre-commit": [
+        "npm prune",
+        "npm run nice-package",
+        "npm test"
+      ]
+    }
+  },
   "contributors": [],
   "dependencies": {
     "check-more-types": "2.23.0",
@@ -27,32 +37,22 @@
   },
   "homepage": "https://github.com/bahmutov/last-commit",
   "keywords": [
-    "git",
-    "commit",
-    "id",
     "build",
     "ci",
+    "commit",
+    "git",
+    "id",
     "utility"
   ],
   "license": "MIT",
   "main": "index.js",
-  "config": {
-    "pre-git": {
-      "commit-msg": "simple",
-      "pre-commit": [
-        "npm prune",
-        "npm run nice-package",
-        "npm test"
-      ]
-    }
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/bahmutov/last-commit.git"
   },
   "scripts": {
-    "test": "node index.js",
     "nice-package": "grunty grunt-nice-package nice-package",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "test": "node index.js"
   }
 }
