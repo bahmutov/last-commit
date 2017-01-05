@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-require('lazy-ass');
+const la = require('lazy-ass');
 var check = require('check-more-types');
 var ggit = require('ggit');
 

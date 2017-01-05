@@ -11,9 +11,9 @@
   },
   "contributors": [],
   "dependencies": {
-    "check-more-types": "1.7.2",
+    "check-more-types": "2.23.0",
     "ggit": "0.13.0",
-    "lazy-ass": "0.5.8"
+    "lazy-ass": "1.5.0"
   },
   "devDependencies": {
     "grunt": "0.4.5",
@@ -41,7 +41,8 @@
       "commit-msg": "simple",
       "pre-commit": [
         "npm prune",
-        "npm run nice-package"
+        "npm run nice-package",
+        "npm test"
       ]
     }
   },
