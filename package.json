@@ -17,6 +17,9 @@
         "npm run nice-package",
         "npm test"
       ]
+    },
+    "next-update": {
+      "skip": ["grunt"]
     }
   },
   "contributors": [],
