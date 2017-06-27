@@ -27,7 +27,7 @@
   "contributors": [],
   "dependencies": {
     "check-more-types": "2.23.0",
-    "ggit": "1.13.5",
+    "ggit": "1.13.7",
     "lazy-ass": "1.5.0"
   },
   "devDependencies": {
