@@ -11,6 +11,8 @@ git status
 # new upgrades
 if git diff --name-only | grep package.json > /dev/null; then
   echo "There are new versions of dependencies 💪"
+  git add package.json
+  git commit -m "chore(deps): upgraded dependencies with next-update"
 else
   echo "No new versions found ✋"
 fi
