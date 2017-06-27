@@ -2,31 +2,31 @@
 
 set -o xtrace
 
-# if [ "$TRAVIS_EVENT_TYPE" = "cron" ]; then
-echo "Upgrading dependencies using next-update"
-npm i -g next-update
-next-update -m ggit --allow patch
-git status
-# if package.json is modified we have
-# new upgrades
-if git diff --name-only | grep package.json > /dev/null; then
-  echo "There are new versions of dependencies 💪"
-  git add package.json
-  git config --global user.email "travis@ci.com"
-  git config --global user.name "next-update"
-  git commit -m "chore(deps): upgraded dependencies with next-update"
-  # push back to GitHub using token
-  git remote remove origin
-  # TODO read origin from package.json
-  # or use github api module github
-  # like in https://github.com/semantic-release/semantic-release/blob/caribou/src/post.js
-  git remote add origin https://bahmutov:$GH_TOKEN@github.com/bahmutov/last-commit.git
-  git push origin HEAD:master
+if [ "$TRAVIS_EVENT_TYPE" = "cron" ]; then
+  echo "Upgrading dependencies using next-update"
+  npm i -g next-update
+  next-update --allow patch
+  git status
+  # if package.json is modified we have
+  # new upgrades
+  if git diff --name-only | grep package.json > /dev/null; then
+    echo "There are new versions of dependencies 💪"
+    git add package.json
+    git config --global user.email "next-update@ci.com"
+    git config --global user.name "next-update"
+    git commit -m "chore(deps): upgraded dependencies with next-update"
+    # push back to GitHub using token
+    git remote remove origin
+    # TODO read origin from package.json
+    # or use github api module github
+    # like in https://github.com/semantic-release/semantic-release/blob/caribou/src/post.js
+    git remote add origin https://next-update:$GH_TOKEN@github.com/bahmutov/last-commit.git
+    git push origin HEAD:master
+  else
+    echo "No new versions found ✋"
+  fi
 else
-  echo "No new versions found ✋"
+  echo "Not a cron job, normal test"
+  npm test
 fi
-# else
-#   echo "Not a cron job, normal test"
-#   npm test
-# fi
 
