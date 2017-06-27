@@ -21,7 +21,7 @@ if git diff --name-only | grep package.json > /dev/null; then
   # or use github api module github
   # like in https://github.com/semantic-release/semantic-release/blob/caribou/src/post.js
   git remote add origin https://bahmutov:$GH_TOKEN@github.com/bahmutov/last-commit.git
-  git push origin master
+  git push origin HEAD:master
 else
   echo "No new versions found ✋"
 fi
