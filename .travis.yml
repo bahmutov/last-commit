@@ -9,6 +9,8 @@ node_js:
   - '6'
 before_script:
   - npm prune
+script:
+  - ./test-or-upgrade.sh
 after_success:
   - npm run semantic-release
 branches:
