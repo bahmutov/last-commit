@@ -15,7 +15,13 @@ if git diff --name-only | grep package.json > /dev/null; then
   git config --global user.email "travis@ci.com"
   git config --global user.name "next-update"
   git commit -m "chore(deps): upgraded dependencies with next-update"
-  git push origin
+  # push back to GitHub using token
+  git remote remove origin
+  # TODO read origin from package.json
+  # or use github api module github
+  # like in https://github.com/semantic-release/semantic-release/blob/caribou/src/post.js
+  git remote add origin https://bahmutov:$GH_TOKEN@github.com/bahmutov/last-commit.git
+  git push origin master
 else
   echo "No new versions found ✋"
 fi
