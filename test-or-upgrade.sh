@@ -15,6 +15,7 @@ if git diff --name-only | grep package.json > /dev/null; then
   git config --global user.email "travis@ci.com"
   git config --global user.name "next-update"
   git commit -m "chore(deps): upgraded dependencies with next-update"
+  git push origin
 else
   echo "No new versions found ✋"
 fi
