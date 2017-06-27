@@ -19,7 +19,9 @@
       ]
     },
     "next-update": {
-      "skip": ["grunt"]
+      "skip": [
+        "grunt"
+      ]
     }
   },
   "contributors": [],
