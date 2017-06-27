@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -o xtrace
+
 if [ "$TRAVIS_EVENT_TYPE" = "cron" ]; then
   echo "Upgrading dependencies using next-update"
   npm i -g next-update
