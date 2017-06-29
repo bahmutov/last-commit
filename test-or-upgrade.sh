@@ -5,7 +5,7 @@ set -o xtrace
 if [ "$TRAVIS_EVENT_TYPE" = "cron" ]; then
   echo "Upgrading dependencies using next-update"
   npm i -g next-update
-  next-update --allow patch --latest false
+  next-update --allow minor --latest false
   git status
   # if package.json is modified we have
   # new upgrades
