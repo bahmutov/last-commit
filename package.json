@@ -26,15 +26,15 @@
   },
   "contributors": [],
   "dependencies": {
-    "check-more-types": "2.23.0",
-    "ggit": "1.13.7",
-    "lazy-ass": "1.5.1"
+    "check-more-types": "2.24.0",
+    "ggit": "1.15.1",
+    "lazy-ass": "1.6.0"
   },
   "devDependencies": {
     "grunt": "0.4.5",
     "grunt-nice-package": "0.10.4",
     "grunty": "0.3.0",
-    "pre-git": "3.12.1",
+    "pre-git": "3.15.0",
     "semantic-release": "4.3.5"
   },
   "engines": {
